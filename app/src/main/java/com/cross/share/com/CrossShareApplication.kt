@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.cross.share.com.di.AppComponent
 import com.cross.share.com.di.DaggerAppComponent
+import com.google.firebase.FirebaseApp
 
 
 class CrossShareApplication : Application() {
@@ -16,5 +17,6 @@ class CrossShareApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         _appComponent = DaggerAppComponent.create()
+        FirebaseApp.initializeApp(this)
     }
 }
