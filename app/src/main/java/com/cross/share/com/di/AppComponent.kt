@@ -5,7 +5,7 @@ import com.cross.share.com.CrossShareApplication
 import dagger.BindsInstance
 import dagger.Component
 
-@Component(modules = [AppModule::class])
+@Component(modules = [AppModule::class, NetworkModule::class])
 interface AppComponent {
 
     fun inject(app: CrossShareApplication)
