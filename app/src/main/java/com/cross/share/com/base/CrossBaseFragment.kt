@@ -6,20 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import com.cross.share.com.R
 
 abstract class CrossBaseFragment : Fragment() {
 
-    @get:LayoutRes
-    abstract val screenLayout: Int
+    private var _viewBinding: ViewBinding? = null
+    protected val viewBinding
+        get() = _viewBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(screenLayout, container, false)
+        _viewBinding = setupViewBinding(inflater, container)
+        return _viewBinding!!.root
     }
+
+    abstract fun setupViewBinding(
+        inflater: LayoutInflater, container: ViewGroup?): ViewBinding
 
     private fun getCurrentFragment(): CrossBaseFragment? {
         val fragment =
