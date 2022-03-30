@@ -1,7 +1,6 @@
 package com.cross.share.com
 
 import android.app.Application
-import android.content.Context
 import com.cross.share.com.di.AppComponent
 import com.cross.share.com.di.DaggerAppComponent
 
@@ -15,6 +14,6 @@ class CrossShareApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        _appComponent = DaggerAppComponent.create()
+        _appComponent = DaggerAppComponent.builder().context(this).build()
     }
 }

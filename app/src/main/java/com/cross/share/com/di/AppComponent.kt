@@ -1,11 +1,21 @@
 package com.cross.share.com.di
 
+import android.content.Context
 import com.cross.share.com.CrossShareApplication
+import dagger.BindsInstance
 import dagger.Component
 
-@Component(modules = [AppModule::class])
+@Component(modules = [AppModule::class, NetworkModule::class])
 interface AppComponent {
 
     fun inject(app: CrossShareApplication)
-    //fun appContext() : Context
+
+    @Component.Builder
+    interface Builder {
+
+        @BindsInstance
+        fun context(context: Context): Builder
+
+        fun build(): AppComponent
+    }
 }
