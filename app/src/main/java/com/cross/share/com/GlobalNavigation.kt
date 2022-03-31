@@ -29,7 +29,7 @@ object GlobalNavigation {
 
 
     fun startFragment(
-        fragment: CrossBaseFragment, data: Bundle? = null, tag: String? = null,
+        fragment: CrossBaseFragment<*>, data: Bundle? = null, tag: String? = null,
         navigationCommand: CrossFragmentNavigationCommand = CrossFragmentNavigationCommand.ADD
     ) {
         val activity = activity?.get() ?: throw RuntimeException("No visible Activity was set")
