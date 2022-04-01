@@ -1,4 +1,4 @@
-package com.cross.share.com.di
+package com.crossapp.core.di
 
 import dagger.Module
 import dagger.Provides

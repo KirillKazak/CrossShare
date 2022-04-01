@@ -3,7 +3,7 @@ package com.cross.share.com
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.cross.share.com.splash.CrossSplashFragment
+import com.cross.share.com.splash.ui.CrossSplashFragment
 
 class MainActivity : AppCompatActivity() {
 
