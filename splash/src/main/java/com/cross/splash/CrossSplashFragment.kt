@@ -1,8 +1,8 @@
 package com.cross.splash
 
 import androidx.fragment.app.viewModels
-import com.crossapp.core.base.CrossBaseFragment
-import com.crossapp.core.base.ViewModelFactory
+import com.crossapp.core.base.fragment.CrossBaseFragment
+import com.crossapp.core.base.vm.ViewModelFactory
 import com.crossapp.core.di.CoreInjectHelper
 import javax.inject.Inject
 

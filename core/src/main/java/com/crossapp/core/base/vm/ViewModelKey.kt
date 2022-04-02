@@ -1,4 +1,4 @@
-package com.crossapp.core.base
+package com.crossapp.core.base.vm
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

@@ -1,4 +1,4 @@
-package com.crossapp.core.base
+package com.crossapp.core.base.vm
 
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds

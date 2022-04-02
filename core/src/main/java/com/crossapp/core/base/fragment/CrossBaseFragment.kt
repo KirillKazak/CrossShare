@@ -1,4 +1,4 @@
-package com.crossapp.core.base
+package com.crossapp.core.base.fragment
 
 import android.content.Context
 import android.os.Bundle
@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import com.cross.navigation.NavigationActivity
+import com.crossapp.core.base.vm.CrossBaseViewModel
 
-abstract class CrossBaseFragment<VM : ViewModel> : Fragment() {
+abstract class CrossBaseFragment<VM : CrossBaseViewModel> : Fragment() {
 
     @get:LayoutRes
     abstract val screenLayout: Int
@@ -31,11 +33,21 @@ abstract class CrossBaseFragment<VM : ViewModel> : Fragment() {
         initComponent()
     }
 
+
    abstract fun onBindViewModel(vm: VM) // implement base subscriptions here
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vm.let { onBindViewModel(it) }
+        vm.navigation.observe(this) {
+            (requireActivity() as NavigationActivity).navigateToState(
+                state = it.state,
+                data = it.data,
+                tag = it.tag,
+                navigationCommand = it.navCom
+            )
+        }
+        onBindViewModel(vm)
+
     }
 
 }
