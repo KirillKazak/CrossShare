@@ -1,7 +1,6 @@
-package com.cross.share.com.splash.di
+package com.cross.splash
 
 import androidx.lifecycle.ViewModel
-import com.cross.share.com.splash.vm.CrossSplashViewModel
 import com.crossapp.core.base.ViewModelBuilderModule
 import com.crossapp.core.base.ViewModelKey
 import dagger.Binds

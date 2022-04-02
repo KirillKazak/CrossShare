@@ -1,4 +1,4 @@
-package com.cross.share.com.base
+package com.crossapp.core.base
 
 import android.content.Context
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import com.cross.share.com.R
 
 abstract class CrossBaseFragment<VM : ViewModel> : Fragment() {
 
@@ -39,30 +38,4 @@ abstract class CrossBaseFragment<VM : ViewModel> : Fragment() {
         vm.let { onBindViewModel(it) }
     }
 
-
-    private fun getCurrentFragment(): CrossBaseFragment<*>? {
-        val fragment =
-            childFragmentManager.findFragmentById(R.id.fragmentContainer) as? CrossBaseFragment<*>
-        return if (fragment?.isAdded == true) fragment else null
-    }
-
-    fun showFragment(
-        fragment: CrossBaseFragment<*>,
-        tag: String?,
-        navigationCommand: CrossFragmentNavigationCommand
-    ) {
-        if (navigationCommand == CrossFragmentNavigationCommand.REPLACE_AND_POP) {
-            childFragmentManager.popBackStack()
-        }
-
-        val transition = childFragmentManager.beginTransaction()
-
-        if (navigationCommand == CrossFragmentNavigationCommand.ADD) {
-            transition.add(R.id.fragmentContainer, fragment, tag)
-        } else {
-            transition.replace(R.id.fragmentContainer, fragment, tag)
-        }
-        transition.addToBackStack(tag)
-        transition.commit()
-    }
 }

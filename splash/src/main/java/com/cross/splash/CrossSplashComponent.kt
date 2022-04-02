@@ -1,6 +1,6 @@
-package com.cross.share.com.splash.di
+package com.cross.splash
 
-import com.cross.share.com.splash.ui.CrossSplashFragment
+import com.cross.splash.CrossSplashFragment
 import com.crossapp.core.di.CoreComponent
 import com.crossapp.core.di.Screen
 import dagger.Component
@@ -8,5 +8,5 @@ import dagger.Component
 @Screen
 @Component(dependencies = [CoreComponent::class], modules = [CrossSplashModule::class])
 interface CrossSplashComponent {
-    fun inject(splashFragment: CrossSplashFragment)
+    fun inject(splashFragment: com.cross.splash.CrossSplashFragment)
 }

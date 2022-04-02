@@ -1,4 +1,4 @@
-package com.cross.share.com.splash.vm
+package com.cross.splash
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

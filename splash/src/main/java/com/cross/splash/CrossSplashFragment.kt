@@ -1,10 +1,7 @@
-package com.cross.share.com.splash.ui
+package com.cross.splash
 
 import androidx.fragment.app.viewModels
-import com.cross.share.com.R
-import com.cross.share.com.base.CrossBaseFragment
-import com.cross.share.com.splash.di.DaggerCrossSplashComponent
-import com.cross.share.com.splash.vm.CrossSplashViewModel
+import com.crossapp.core.base.CrossBaseFragment
 import com.crossapp.core.base.ViewModelFactory
 import com.crossapp.core.di.CoreInjectHelper
 import javax.inject.Inject

@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "CrossShare"
 include ':app', ':core'
+include ':navigation'
+include ':splash'
