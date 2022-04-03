@@ -1,20 +1,26 @@
-package com.cross.share.com
+package com.cross.share.com.base
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.cross.share.com.base.CrossBaseFragment
-import com.cross.share.com.base.CrossFragmentNavigationCommand
+import com.cross.navigation.CrossFragmentNavigationCommand
+import com.cross.navigation.CrossFragmentStates
+
+import com.cross.share.com.activity.MainActivity
+import com.cross.share.com.R
+import com.cross.splash.CrossSplashFragment
+import com.crossapp.core.base.fragment.CrossBaseFragment
 import java.lang.ref.WeakReference
 
-object GlobalNavigation {
+object GlobalNavigationImpl {
+
     private var activity: WeakReference<AppCompatActivity>? = null
 
     fun setActiveActivity(activity: AppCompatActivity){
         this.activity = WeakReference<AppCompatActivity>(activity)
     }
 
-    fun getVisibleActivity(): AppCompatActivity? = this.activity?.get()
+    fun getVisibleActivity(): AppCompatActivity? = activity?.get()
 
     fun startActivity(clazz: Class<out AppCompatActivity>, data: Bundle?) {
         val activity = activity?.get() ?: throw  RuntimeException("No visible Activity was set")
@@ -28,9 +34,9 @@ object GlobalNavigation {
     }
 
 
-    fun startFragment(
-        fragment: CrossBaseFragment, data: Bundle? = null, tag: String? = null,
-        navigationCommand: CrossFragmentNavigationCommand = CrossFragmentNavigationCommand.ADD
+  private fun startFragment(
+      fragment: CrossBaseFragment<*>, data: Bundle? = null, tag: String? = null,
+      navigationCommand: CrossFragmentNavigationCommand = CrossFragmentNavigationCommand.ADD
     ) {
         val activity = activity?.get() ?: throw RuntimeException("No visible Activity was set")
         if (activity is MainActivity) {
@@ -48,6 +54,20 @@ object GlobalNavigation {
             }
             transition.addToBackStack(tag)
             transition.commit()
+        }
+  }
+
+    fun navigateToState(
+        state: CrossFragmentStates, data: Bundle? = null, tag: String? = null,
+        navigationCommand: CrossFragmentNavigationCommand = CrossFragmentNavigationCommand.ADD
+    ) {
+        startFragment(fromStateToFragment(state), data, tag, navigationCommand)
+    }
+
+
+    private fun fromStateToFragment(state: CrossFragmentStates): CrossBaseFragment<*> {
+        return when(state){
+            CrossFragmentStates.CROSS_SPLASH -> CrossSplashFragment()
         }
     }
 }

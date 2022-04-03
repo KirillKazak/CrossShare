@@ -1,20 +1,32 @@
 package com.cross.share.com
 
 import android.app.Application
-import android.content.Context
-import com.cross.share.com.di.AppComponent
-import com.cross.share.com.di.DaggerAppComponent
+import com.crossapp.core.di.*
 
 
-class CrossShareApplication : Application() {
+class CrossShareApplication : Application(), CoreComponentProvider {
 
-    private var _appComponent: AppComponent? = null
-
-    internal val appComponent: AppComponent
-      get() = checkNotNull(_appComponent) {"AppComponent is not initialized"}
+private lateinit var coreComponent: CoreComponent
 
     override fun onCreate() {
         super.onCreate()
-        _appComponent = DaggerAppComponent.create()
+        initCoreComponent()
     }
+
+
+    private fun initCoreComponent() {
+        coreComponent = DaggerCoreComponent
+            .builder()
+            .coreModule(CoreModule(this))
+            .build()
+
+    }
+
+    override fun provideCoreComponent(): CoreComponent {
+        if (!this::coreComponent.isInitialized) {
+            initCoreComponent()
+        }
+        return coreComponent
+    }
+
 }

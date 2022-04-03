@@ -1,4 +1,4 @@
-package com.cross.share.com.base
+package com.cross.navigation
 
 enum class CrossFragmentNavigationCommand {
     REPLACE,
