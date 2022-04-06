@@ -3,6 +3,7 @@ package com.cross.share.com
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.cross.share.com.activity.MainActivity
 import com.cross.share.com.base.CrossBaseFragment
 import com.cross.share.com.base.CrossFragmentNavigationCommand
 import java.lang.ref.WeakReference

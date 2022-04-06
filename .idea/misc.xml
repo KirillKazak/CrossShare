@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android_repository/CrossShare/splash/src/main/res/layout/fragment_spash.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_base_fragment.xml" value="0.1" />
         <entry key="splash/src/main/res/layout/fragment_spash.xml" value="0.10555555555555556" />
