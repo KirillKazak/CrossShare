@@ -1,6 +1,7 @@
 package com.cross.share.com
 
 import android.app.Application
+import com.google.firebase.FirebaseApp
 import com.crossapp.core.di.*
 
 
@@ -10,6 +11,7 @@ private lateinit var coreComponent: CoreComponent
 
     override fun onCreate() {
         super.onCreate()
+        FirebaseApp.initializeApp(this)
         initCoreComponent()
     }
 

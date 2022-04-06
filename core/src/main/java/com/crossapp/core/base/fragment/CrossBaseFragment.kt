@@ -8,33 +8,34 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import androidx.viewbinding.ViewBinding
 import com.cross.navigation.NavigationActivity
 import com.crossapp.core.base.vm.CrossBaseViewModel
 
-abstract class CrossBaseFragment<VM : CrossBaseViewModel> : Fragment() {
+typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
-    @get:LayoutRes
-    abstract val screenLayout: Int
+abstract class CrossBaseFragment<VM : CrossBaseViewModel, VB: ViewBinding>(
+    private val inflate: Inflate<VB>
+) : Fragment() {
 
     abstract val vm : VM
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(screenLayout, container, false)
-    }
-
-    abstract fun initComponent()
+    private var _binding: VB? = null
+    val binding get() = _binding!!
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         initComponent()
     }
 
-
-   abstract fun onBindViewModel(vm: VM) // implement base subscriptions here
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = inflate.invoke(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,7 +48,15 @@ abstract class CrossBaseFragment<VM : CrossBaseViewModel> : Fragment() {
             )
         }
         onBindViewModel(vm)
-
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    abstract fun initComponent()
+
+    abstract fun onBindViewModel(vm: VM) // implement base subscriptions here
 
 }
