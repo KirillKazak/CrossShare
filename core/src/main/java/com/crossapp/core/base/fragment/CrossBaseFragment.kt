@@ -18,10 +18,6 @@ abstract class CrossBaseFragment<VM : CrossBaseViewModel, VB: ViewBinding>(
     private val inflate: Inflate<VB>
 ) : Fragment() {
 
-
-
-    @get:LayoutRes
-    abstract val screenLayout: Int
     abstract val vm : VM
 
     private var _binding: VB? = null

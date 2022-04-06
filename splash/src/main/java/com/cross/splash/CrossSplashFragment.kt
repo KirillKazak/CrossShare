@@ -15,7 +15,7 @@ class CrossSplashFragment : CrossBaseFragment<CrossSplashViewModel, FragmentSpas
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    override val screenLayout: Int = R.layout.fragment_spash
+
 
     override val vm: CrossSplashViewModel by viewModels { viewModelFactory }
 
