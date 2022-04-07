@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_base_fragment.xml" value="0.1" />
+        <entry key="catalogs/src/main/res/layout/cross_catalogs_fragment.xml" value="0.1" />
         <entry key="splash/src/main/res/layout/fragment_spash.xml" value="0.10555555555555556" />
       </map>
     </option>
