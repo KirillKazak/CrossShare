@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cross.navigation.CrossFragmentNavigationCommand
 import com.cross.navigation.CrossFragmentStates
-
 import com.cross.share.com.activity.MainActivity
 import com.cross.share.com.R
 import com.cross.splash.CrossSplashFragment
@@ -36,7 +35,7 @@ object GlobalNavigationImpl {
 
 
   private fun startFragment(
-      fragment: CrossBaseFragment<*>, data: Bundle? = null, tag: String? = null,
+      fragment: CrossBaseFragment<*, *>, data: Bundle? = null, tag: String? = null,
       navigationCommand: CrossFragmentNavigationCommand = CrossFragmentNavigationCommand.REPLACE
     ) {
         val activity = activity?.get() ?: throw RuntimeException("No visible Activity was set")
@@ -66,7 +65,7 @@ object GlobalNavigationImpl {
     }
 
 
-    private fun fromStateToFragment(state: CrossFragmentStates): CrossBaseFragment<*> {
+    private fun fromStateToFragment(state: CrossFragmentStates): CrossBaseFragment<*, *> {
         return when(state){
             CrossFragmentStates.CROSS_SPLASH -> CrossSplashFragment()
             CrossFragmentStates.CROSS_CATALOGS -> CrossCatalogsFragment()
