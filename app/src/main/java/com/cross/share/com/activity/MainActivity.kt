@@ -7,6 +7,7 @@ import com.cross.navigation.CrossFragmentNavigationCommand
 import com.cross.navigation.CrossFragmentStates
 import com.cross.navigation.NavigationActivity
 import com.cross.share.com.R
+import com.cross.share.com.base.GlobalNavigation
 import com.cross.share.com.base.GlobalNavigationImpl
 
 class MainActivity : AppCompatActivity(), NavigationActivity {

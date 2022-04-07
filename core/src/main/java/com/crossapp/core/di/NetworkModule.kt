@@ -15,7 +15,7 @@ class NetworkModule {
         okHttpClient: OkHttpClient,
         converterFactory: GsonConverterFactory
     ): Retrofit.Builder {
-        return Retrofit.Builder().baseUrl("https://earthquake.usgs.gov/fdsnws/event/1/")
+        return Retrofit.Builder().baseUrl("https://earthquake.usgs.gov/fdsnws/event/1/quety?format=geojson")
             .addConverterFactory(converterFactory).client(okHttpClient)
     }
 

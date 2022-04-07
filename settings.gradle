@@ -16,3 +16,5 @@ rootProject.name = "CrossShare"
 include ':app', ':core'
 include ':navigation'
 include ':splash'
+include ':catalogs'
+include ':models'

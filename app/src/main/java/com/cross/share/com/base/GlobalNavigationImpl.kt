@@ -9,6 +9,7 @@ import com.cross.navigation.CrossFragmentStates
 import com.cross.share.com.activity.MainActivity
 import com.cross.share.com.R
 import com.cross.splash.CrossSplashFragment
+import com.crossapp.catalogs.ui.CrossCatalogsFragment
 import com.crossapp.core.base.fragment.CrossBaseFragment
 import java.lang.ref.WeakReference
 
@@ -36,7 +37,7 @@ object GlobalNavigationImpl {
 
   private fun startFragment(
       fragment: CrossBaseFragment<*>, data: Bundle? = null, tag: String? = null,
-      navigationCommand: CrossFragmentNavigationCommand = CrossFragmentNavigationCommand.ADD
+      navigationCommand: CrossFragmentNavigationCommand = CrossFragmentNavigationCommand.REPLACE
     ) {
         val activity = activity?.get() ?: throw RuntimeException("No visible Activity was set")
         if (activity is MainActivity) {
@@ -59,7 +60,7 @@ object GlobalNavigationImpl {
 
     fun navigateToState(
         state: CrossFragmentStates, data: Bundle? = null, tag: String? = null,
-        navigationCommand: CrossFragmentNavigationCommand = CrossFragmentNavigationCommand.ADD
+        navigationCommand: CrossFragmentNavigationCommand = CrossFragmentNavigationCommand.REPLACE
     ) {
         startFragment(fromStateToFragment(state), data, tag, navigationCommand)
     }
@@ -68,6 +69,7 @@ object GlobalNavigationImpl {
     private fun fromStateToFragment(state: CrossFragmentStates): CrossBaseFragment<*> {
         return when(state){
             CrossFragmentStates.CROSS_SPLASH -> CrossSplashFragment()
+            CrossFragmentStates.CROSS_CATALOGS -> CrossCatalogsFragment()
         }
     }
 }
